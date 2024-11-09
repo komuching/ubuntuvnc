@@ -28,9 +28,12 @@ chmod +x ~/.vnc/xstartup
 echo "." | vncpasswd -f > ~/.vnc/passwd
 chmod 600 ~/.vnc/passwd
 
-# Set environment variable DISPLAY untuk VNC
+# Jalankan Xvfb di display :1
+Xvfb :1 -screen 0 1280x720x24 &
+
+# Set environment variable DISPLAY untuk Xvfb
 export DISPLAY=:1
 
-# Jalankan TigerVNC dan noVNC
+# Lanjutkan dengan konfigurasi VNC
 vncserver :1 -geometry 1280x720 -depth 24 -localhost no &
 novnc_proxy --vnc localhost:5901 --listen 6080 &
