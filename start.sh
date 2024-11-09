@@ -25,7 +25,7 @@ EOF
 chmod +x ~/.vnc/xstartup
 
 # Set password VNC (password default: 'password')
-echo "password" | vncpasswd -f > ~/.vnc/passwd
+echo "." | vncpasswd -f > ~/.vnc/passwd
 chmod 600 ~/.vnc/passwd
 
 # Set environment variable DISPLAY untuk VNC
