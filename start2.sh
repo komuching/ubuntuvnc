@@ -15,6 +15,10 @@ apt-get update && apt-get upgrade -y
 echo "Menginstal paket-paket yang diperlukan..."
 apt-get install -y x11vnc xvfb fluxbox novnc websockify wget unzip google-chrome-stable
 
+echo "mencoba verifikasi paket.."
+sudo apt-get update
+sudo apt-get install -y xvfb fluxbox x11vnc novnc websockify
+
 # Setup Google Chrome jika belum terinstal
 if ! command -v google-chrome &> /dev/null; then
     echo "Menginstal Google Chrome..."
