@@ -5,7 +5,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Update dan instal XFCE, TigerVNC, wget, git, dan python3-websockify
 sudo apt update && sudo apt install -y \
-    xfce4 xfce4-goodies tigervnc-standalone-server wget git python3-websockify
+    xfce4 xfce4-goodies tigervnc-standalone-server wget git python3-websockify xvfb
 
 # Instal noVNC dari GitHub
 sudo mkdir -p /opt/novnc
@@ -34,6 +34,6 @@ Xvfb :1 -screen 0 1280x720x24 &
 # Set environment variable DISPLAY untuk Xvfb
 export DISPLAY=:1
 
-# Lanjutkan dengan konfigurasi VNC
+# Jalankan TigerVNC dan noVNC
 vncserver :1 -geometry 1280x720 -depth 24 -localhost no &
 novnc_proxy --vnc localhost:5901 --listen 6080 &
