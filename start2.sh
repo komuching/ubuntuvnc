@@ -13,11 +13,7 @@ echo "Mengupdate sistem..."
 apt-get update && apt-get upgrade -y
 
 echo "Menginstal paket-paket yang diperlukan..."
-apt-get install -y x11vnc xvfb fluxbox novnc websockify wget unzip google-chrome-stable
-
-echo "mencoba verifikasi paket.."
-sudo apt-get update
-sudo apt-get install -y xvfb fluxbox x11vnc novnc websockify
+apt-get install -y x11vnc xvfb fluxbox novnc websockify wget unzip curl
 
 # Setup Google Chrome jika belum terinstal
 if ! command -v google-chrome &> /dev/null; then
@@ -35,6 +31,7 @@ echo "password" | x11vnc -storepasswd ~/.vnc/passwd
 # Membuat file konfigurasi untuk Xvfb
 cat <<EOF > /usr/local/bin/start-vnc.sh
 #!/bin/bash
+set -x  # Debug mode untuk troubleshooting
 export DISPLAY=:0
 Xvfb :0 -screen 0 1920x1080x24 &
 fluxbox &
@@ -78,4 +75,4 @@ echo "Memulai layanan VNC..."
 
 echo "Instalasi selesai."
 echo "Akses noVNC Anda melalui browser dengan URL berikut:"
-echo "http://localhost:6080"
+echo "http://<IP_ADDRESS>:6080"
